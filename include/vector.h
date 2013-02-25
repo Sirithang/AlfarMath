@@ -1,5 +1,4 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#pragma once
 
 #include "math_types.h"
 
@@ -27,4 +26,3 @@ namespace alfar
     }
 }
 
-#endif // VECTOR_H
