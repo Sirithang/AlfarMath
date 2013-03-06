@@ -3,15 +3,7 @@
 using namespace alfar;
 using namespace alfar::vector3;
 
-inline Vector3 add(const Vector3& p_First, const Vector3& p_Second)
-{
-    Vector3 ret;
-    ret.x = p_First.x + p_Second.x;
-    ret.y = p_First.y + p_Second.y;
-    ret.z = p_First.z + p_Second.z;
 
-    return ret;
-}
 
 inline Vector3 sub(const Vector3& p_First, const Vector3& p_Second);
 inline Vector3 mul(const Vector3& p_Vec, const float p_Scalar);
