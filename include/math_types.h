@@ -32,6 +32,11 @@ namespace alfar
             Vector4 x, y, z, t;
     };
 
+    struct Rect
+    {
+            Vector2 min, max;
+    };
+
     struct AABB
     {
             Vector3 min, max;
