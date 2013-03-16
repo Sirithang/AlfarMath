@@ -2,6 +2,7 @@
 
 #include "math_types.h"
 #include <stdint.h>
+#include <memory>
 
 namespace alfar
 {
@@ -79,7 +80,7 @@ namespace alfar
 
         //---------------------------------------------------------------------------
 
-        inline float dot(const Vector3& p_First, const Vector3& p_Second)
+        inline float dot(const Vector4& p_First, const Vector4& p_Second)
         {
             return p_First.x * p_Second.x + p_First.y * p_Second.y + p_First.z * p_Second.z;
         }
@@ -162,7 +163,7 @@ namespace alfar
 
         //--------------------------------------------------------------------------------------
 
-        void dot(Vector4* p_Firsts, Vector4* p_Seconds, float* p_Out, uint32_t p_Number)
+        inline void dot(Vector4* p_Firsts, Vector4* p_Seconds, float* p_Out, uint32_t p_Number)
         {
             for(uint32_t i = 0; i < p_Number; ++i)
             {
