@@ -52,6 +52,22 @@ namespace alfar
             return ret;
         }
 
+		//=======================================================================
+
+		inline Vector3 mul(const Matrix4x4& p_Mat, const Vector3& p_Vec)
+		{
+			Vector3 ret;
+
+			float w = p_Mat.t.x * p_Vec.x + p_Mat.t.y * p_Vec.y + p_Mat.t.z * p_Vec.z + p_Mat.t.w * 1;
+
+			ret.x = (p_Mat.x.x * p_Vec.x + p_Mat.x.y * p_Vec.y + p_Mat.x.z * p_Vec.z + p_Mat.x.w * 1)/w;
+			ret.y = (p_Mat.y.x * p_Vec.x + p_Mat.y.y * p_Vec.y + p_Mat.y.z * p_Vec.z + p_Mat.y.w * 1)/w;
+			ret.z = (p_Mat.z.x * p_Vec.x + p_Mat.z.y * p_Vec.y + p_Mat.z.z * p_Vec.z + p_Mat.z.w * 1)/w;
+			
+
+			return ret;
+		}
+
         //-----------------------------------------------------------------------
 
         inline Vector3 scale(const Vector3& p_First, const Vector3& p_Second)
@@ -169,7 +185,7 @@ namespace alfar
 
         //-----------------------------------------------------------------------------------
             
-        void cross(Vector3* p_Firsts, Vector3* p_Seconds, Vector3* p_Out, uint32_t p_Number)
+        inline void cross(Vector3* p_Firsts, Vector3* p_Seconds, Vector3* p_Out, uint32_t p_Number)
         {
             for(uint32_t i = 0; i < p_Number; ++i)
             {
@@ -185,7 +201,7 @@ namespace alfar
 
         //--------------------------------------------------------------------------------------
 
-        void dot(Vector3* p_Firsts, Vector3* p_Seconds, float* p_Out, uint32_t p_Number)
+        inline void dot(Vector3* p_Firsts, Vector3* p_Seconds, float* p_Out, uint32_t p_Number)
         {
             for(uint32_t i = 0; i < p_Number; ++i)
             {

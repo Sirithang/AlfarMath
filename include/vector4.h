@@ -65,6 +65,20 @@ namespace alfar
             return ret;
         }
 
+		//=======================================================================
+
+		inline Vector4 mul(const Matrix4x4& p_Mat, const Vector4& p_Vec)
+		{
+			Vector4 ret;
+
+			ret.x = p_Mat.x.x * p_Vec.x + p_Mat.x.y * p_Vec.y + p_Mat.x.z * p_Vec.z + p_Mat.x.w * p_Vec.w;
+			ret.y = p_Mat.y.x * p_Vec.x + p_Mat.y.y * p_Vec.y + p_Mat.y.z * p_Vec.z + p_Mat.y.w * p_Vec.w;
+			ret.z = p_Mat.z.x * p_Vec.x + p_Mat.z.y * p_Vec.y + p_Mat.z.z * p_Vec.z + p_Mat.z.w * p_Vec.w;
+			ret.w = p_Mat.t.x * p_Vec.x + p_Mat.t.y * p_Vec.y + p_Mat.t.z * p_Vec.z + p_Mat.t.w * p_Vec.w;
+
+			return ret;
+		}
+
         //-----------------------------------------------------------------------
 
         inline Vector4 scale(const Vector4& p_First, const Vector4& p_Second)

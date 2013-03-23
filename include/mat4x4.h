@@ -73,10 +73,28 @@ namespace alfar
             mat.t.y = -(top + bottom) / (top - bottom);
             mat.t.z = -(zFar + zNear) / (zFar - zNear);
             mat.t.w = 1;
+
+			return mat;
         }
 
         //----------------------------------------------------------------------------------------
 
+		inline Matrix4x4 identity()
+		{
+			return create(alfar::vector4::create(1,0,0,0), alfar::vector4::create(0,1,0,0), alfar::vector4::create(0,0,1,0), alfar::vector4::create(0,0,0,1));
+		}
 
+		//=========================================================================================
+
+		inline Matrix4x4 translation (alfar::Vector3 p_Translate)
+		{
+			Matrix4x4 ret = identity();
+
+			ret.x.w = p_Translate.x;
+			ret.y.w = p_Translate.y;
+			ret.z.w = p_Translate.z;
+
+			return ret;
+		}
     }
 }

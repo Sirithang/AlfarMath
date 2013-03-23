@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>bin</OutDir>
+    <OutDir>bin\</OutDir>
     <TargetName>$(ProjectName)d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -72,6 +72,7 @@
     <ClInclude Include="include\mat4x4.h" />
     <ClInclude Include="include\math_types.h" />
     <ClInclude Include="include\quaternion.h" />
+    <ClInclude Include="include\vector2.h" />
     <ClInclude Include="include\vector3.h" />
     <ClInclude Include="include\vector4.h" />
   </ItemGroup>
