@@ -79,6 +79,31 @@ namespace alfar
 			return ret;
 		}
 
+		//-----------------------------------------------------------------------
+
+		inline float lengthSqr(const Vector4& p_vec)
+		{
+			return p_vec.x * p_vec.x + p_vec.y * p_vec.y + p_vec.z * p_vec.z + p_vec.w + p_vec.w;
+		}
+
+		inline float length(const Vector4& p_vec)
+		{
+			return sqrt(lengthSqr(p_vec));
+		}
+
+		inline Vector4 normalize(const Vector4& p_vec)
+		{
+			Vector4 ret;
+			float norme = length(p_vec);
+
+			ret.x = p_vec.x / norme;
+			ret.y = p_vec.y / norme;
+			ret.z = p_vec.z / norme;
+			ret.w = p_vec.w / norme;
+
+			return ret;
+		}
+
         //-----------------------------------------------------------------------
 
         inline Vector4 scale(const Vector4& p_First, const Vector4& p_Second)
@@ -98,6 +123,8 @@ namespace alfar
         {
             return p_First.x * p_Second.x + p_First.y * p_Second.y + p_First.z * p_Second.z;
         }
+
+		//---------------------------------------------------------------------------
 
         //----- array version
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "math_types.h"
+#include "vector3.h"
 #include "vector4.h"
 #include <math.h>
 
@@ -76,6 +77,45 @@ namespace alfar
 
 			return mat;
         }
+
+		//----------------------------------------------------------------------------------------
+
+		inline Matrix4x4 persp(const float fovY, const float aspect, const float zn, const float zf)
+		{
+			Matrix4x4 mat;
+
+			float yscale = cos(fovY/2.0f) / sin(fovY/2.0f);
+			float xscale = yscale / aspect;
+
+			mat.x = vector4::create(xscale, 0,0,0);
+			mat.y = vector4::create(0,yscale, 0,0);
+			mat.z = vector4::create(0,0,zf/(zf-zn), 1);
+			mat.t = vector4::create(0,0,-zn*zf/(zf-zn), 0);
+
+			return mat;
+		}
+
+		//----------------------------------------------------------------------------------------
+
+		inline Matrix4x4 lookAt(const Vector3& p_eyePos, const Vector3& p_target, const Vector3& p_up)
+		{
+			Matrix4x4 mat;
+			Vector3 zaxis = vector3::normalize(vector3::sub(p_target, p_eyePos));
+			Vector3 xaxis = vector3::normalize(vector3::cross(p_up, zaxis));
+			Vector3 yaxis = vector3::cross(zaxis, xaxis);
+
+
+			mat.x.x = xaxis.x; mat.x.y = yaxis.x; mat.x.z = zaxis.x; mat.x.w = 0;
+			mat.y.x = xaxis.y; mat.y.y = yaxis.y; mat.y.z = zaxis.y; mat.y.w = 0;
+			mat.z.x = xaxis.z; mat.z.y = yaxis.z; mat.z.z = zaxis.z; mat.z.w = 0;
+
+			mat.t.x = -vector3::dot(xaxis, p_eyePos); 
+			mat.t.y = -vector3::dot(yaxis, p_eyePos); 
+			mat.t.z = -vector3::dot(zaxis, p_eyePos); 
+			mat.t.w = 1;
+
+			return mat;
+		}
 
         //----------------------------------------------------------------------------------------
 

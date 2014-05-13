@@ -111,6 +111,18 @@ namespace alfar
             return sqrt(sqrMagnitude(p_Vector));
         }
 
+		inline Vector3 normalize(const Vector3& p_Vector)
+		{
+			Vector3 ret;
+			float norme = magnitude(p_Vector);
+
+			ret.x = p_Vector.x / norme;
+			ret.y = p_Vector.y / norme;
+			ret.z = p_Vector.z / norme;
+
+			return ret;
+		}
+
         //----- array version
 
 
