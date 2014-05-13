@@ -1,5 +1,7 @@
 #pragma once
 
+#include <math.h>
+
 namespace alfar
 {
 	inline int iround(const float f)
@@ -21,5 +23,12 @@ namespace alfar
 		T t = (a < b ? b : a);
 
 		return t < c ? c : t;
+	}
+
+	inline bool approximatly(float a, float b)
+	{
+#define TOLERANCE 0.00001f;
+
+		return abs(a-b) < TOLERANCE;
 	}
 }

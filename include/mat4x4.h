@@ -87,10 +87,11 @@ namespace alfar
 			float yscale = cos(fovY/2.0f) / sin(fovY/2.0f);
 			float xscale = yscale / aspect;
 
+
 			mat.x = vector4::create(xscale, 0,0,0);
 			mat.y = vector4::create(0,yscale, 0,0);
-			mat.z = vector4::create(0,0,zf/(zf-zn), 1);
-			mat.t = vector4::create(0,0,-zn*zf/(zf-zn), 0);
+			mat.z = vector4::create(0,0,zf/(zf-zn), -zn*zf/(zf-zn));
+			mat.t = vector4::create(0,0,1, 0);
 
 			return mat;
 		}
@@ -105,13 +106,13 @@ namespace alfar
 			Vector3 yaxis = vector3::cross(zaxis, xaxis);
 
 
-			mat.x.x = xaxis.x; mat.x.y = yaxis.x; mat.x.z = zaxis.x; mat.x.w = 0;
-			mat.y.x = xaxis.y; mat.y.y = yaxis.y; mat.y.z = zaxis.y; mat.y.w = 0;
-			mat.z.x = xaxis.z; mat.z.y = yaxis.z; mat.z.z = zaxis.z; mat.z.w = 0;
+			mat.x.x = xaxis.x; mat.x.y = xaxis.y; mat.x.z = xaxis.z; mat.x.w = -vector3::dot(xaxis, p_eyePos);
+			mat.y.x = yaxis.x; mat.y.y = yaxis.y; mat.y.z = yaxis.z; mat.y.w = -vector3::dot(yaxis, p_eyePos);
+			mat.z.x = zaxis.x; mat.z.y = zaxis.y; mat.z.z = zaxis.z; mat.z.w = -vector3::dot(zaxis, p_eyePos);
 
-			mat.t.x = -vector3::dot(xaxis, p_eyePos); 
-			mat.t.y = -vector3::dot(yaxis, p_eyePos); 
-			mat.t.z = -vector3::dot(zaxis, p_eyePos); 
+			mat.t.x = 0; 
+			mat.t.y = 0; 
+			mat.t.z = 0; 
 			mat.t.w = 1;
 
 			return mat;
@@ -136,5 +137,7 @@ namespace alfar
 
 			return ret;
 		}
+
+		//===========================================================================
     }
 }
