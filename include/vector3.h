@@ -123,6 +123,19 @@ namespace alfar
 			return ret;
 		}
 
+		inline Vector3 barycentric(const Vector3 a, const Vector3 b, const Vector3 c, const Vector3 pos)
+		{
+			float det = ((b.y-c.y)*(a.x-c.x) + (c.x-b.x)*(a.y-c.y));
+
+			float xb = ((b.y - c.y)*(pos.x - c.x) + (c.x - b.x)*(pos.y - c.y)) / det;
+			float yb = ((c.y - a.y)*(pos.x - c.x) + (a.x - c.x)*(pos.y - c.y)) / det;
+			float zb = 1.0f - xb - yb;
+
+			//return add(add(mul(a,xb), mul(b,yb)), mul(c,zb));
+
+			return vector3::create(xb,yb,zb);
+		}
+
         //----- array version
 
 
