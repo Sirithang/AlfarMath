@@ -117,6 +117,13 @@ namespace alfar
             return ret;
         }
 
+		//---------------------------------------------------------------------------
+
+		inline Vector4 interpolatedFromBarycentric(const Vector4& v1, const Vector4& v2, const Vector4& v3, const Vector3& barycentric)
+		{
+			return vector4::add(vector4::add(vector4::mul(v1, barycentric.x), vector4::mul(v2, barycentric.y)), vector4::mul(v3, barycentric.z));
+		}
+
         //---------------------------------------------------------------------------
 
         inline float dot(const Vector4& p_First, const Vector4& p_Second)
