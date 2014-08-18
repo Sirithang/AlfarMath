@@ -2,6 +2,8 @@
 
 #include "math_types.h"
 #include <stdint.h>
+#include <algorithm>
+#include <math.h>
 #include <memory>
 
 namespace alfar

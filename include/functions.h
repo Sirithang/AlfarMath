@@ -29,6 +29,6 @@ namespace alfar
 	{
 #define TOLERANCE 0.00001f;
 
-		return abs(a-b) < TOLERANCE;
+		return fabs(a-b) < TOLERANCE;
 	}
 }
