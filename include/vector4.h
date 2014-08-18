@@ -28,6 +28,13 @@ namespace alfar
             return create(p_Vect.x, p_Vect.y, p_Vect.z, w);
         }
 
+		//------------------------------------------------------------------
+
+		inline Vector3 toVec3(alfar::Vector4 vec)
+		{
+			return alfar::vector3::create(vec.x, vec.y, vec.z);
+		}
+
         //-------------------------------------------------------------------
 
         inline Vector4 add(const Vector4& p_First, const Vector4& p_Second)

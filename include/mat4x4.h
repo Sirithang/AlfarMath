@@ -90,8 +90,8 @@ namespace alfar
 
 			mat.x = vector4::create(xscale, 0,0,0);
 			mat.y = vector4::create(0,yscale, 0,0);
-			mat.z = vector4::create(0,0,zf/(zf-zn), -zn*zf/(zf-zn));
-			mat.t = vector4::create(0,0,1, 0);
+			mat.z = vector4::create(0,0, (-zn - zf)/(zn-zf), (2 * zf * zn)/(zn-zf));
+			mat.t = vector4::create(0,0, 1, 0);
 
 			return mat;
 		}
