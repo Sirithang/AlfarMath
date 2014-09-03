@@ -1,6 +1,7 @@
 #pragma once 
 
 #include "math_types.h"
+#include "vector3.h"
 #include <stdint.h>
 #include <algorithm>
 #include <math.h>
