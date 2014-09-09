@@ -1,6 +1,7 @@
 #pragma once 
 
 #include "math_types.h"
+#include "functions.h"
 #include "vector3.h"
 #include <stdint.h>
 #include <algorithm>
@@ -132,6 +133,27 @@ namespace alfar
 		inline Vector4 interpolatedFromBarycentric(const Vector4& v1, const Vector4& v2, const Vector4& v3, const Vector3& barycentric)
 		{
 			return vector4::add(vector4::add(vector4::mul(v1, barycentric.x), vector4::mul(v2, barycentric.y)), vector4::mul(v3, barycentric.z));
+		}
+
+		//---------------------------------------------------------------------------
+
+		inline Vector4 lerp(const Vector4& p1, const Vector4& p2, float t)
+		{
+			return vector4::create(	p1.x * (1.0f - t) + p2.x * t, 
+									p1.y * (1.0f - t) + p2.y * t,
+									p1.z * (1.0f - t) + p2.z * t,
+									p1.w * (1.0f - t) + p2.w * t);
+		}
+
+		//---------------------------------------------------------------------------
+
+		inline Vector4 clamp(const Vector4& p, const float min, const float max)
+		{
+			return vector4::create(	
+				alfar::clamp(p.x, min, max), 
+				alfar::clamp(p.y, min, max),
+				alfar::clamp(p.z, min, max),
+				alfar::clamp(p.w, min, max));
 		}
 
         //---------------------------------------------------------------------------

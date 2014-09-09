@@ -25,6 +25,14 @@ namespace alfar
 		return t < c ? c : t;
 	}
 
+	template<typename T>
+	T clamp(const T v, const T min, const T max)
+	{
+		T t = v > min ? v : min;
+
+		return t < max ? t : max;
+	}
+
 	inline bool approximatly(float a, float b)
 	{
 #define TOLERANCE 0.00001f;

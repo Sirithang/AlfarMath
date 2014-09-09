@@ -1,6 +1,7 @@
 #pragma once
 
 #include "math_types.h"
+#include "functions.h"
 #include <stdint.h>
 #include <algorithm>
 #include <math.h>
@@ -137,6 +138,24 @@ namespace alfar
 
 			return vector3::create(xb,yb,zb);
 		}
+
+
+		//return dist to intersections. return -1 if no intersection or behind.
+		inline float linePlaneIntersection(const Vector3& planeOrigin, const Vector3& planeNormal, const Vector3 rayOrigin, const Vector3& rayDir)
+		{
+			float num = vector3::dot(vector3::sub(planeOrigin, rayOrigin), planeNormal);
+			float den = vector3::dot(rayDir, planeNormal);
+
+			if(approximatly(den, 0.0f) || approximatly(num, 0.0f))
+			{
+				return -1.0f;
+			}
+
+
+			float d = num/den;
+			return d;
+		}
+
 
         //----- array version
 
