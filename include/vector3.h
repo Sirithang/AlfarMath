@@ -156,6 +156,53 @@ namespace alfar
 			return d;
 		}
 
+		//====
+
+		//return -1 if no intersection
+		inline float raySphereIntersection(const Vector3& sphereCenter, const float sphereRadius, const Vector3& rayOrigin, const Vector3& rayDir)
+		{
+			Vector3 objectSpaceRayPos = vector3::sub(rayOrigin, sphereCenter);
+
+			float a = vector3::dot(rayDir, rayDir);
+			float b = 2 * vector3::dot(rayDir, objectSpaceRayPos);
+			float c = vector3::dot(objectSpaceRayPos, objectSpaceRayPos) - (sphereRadius*sphereRadius);
+
+			float disc = b*b - 4 * a * c;
+
+			if(disc < 0)
+				return -1.0f;
+
+			float distSqrt = sqrtf(disc);
+			float q;
+
+			if(b < 0 )
+				q = (-b - distSqrt)/2.0f;
+			else
+				q = (-b + distSqrt)/2.0f;
+
+			float t0 = q / a;
+			float t1 = c / q;
+
+			if(t0 > t1)
+			{
+				float temp = t0;
+				t0 = t1;
+				t1 = temp;
+			}
+
+			if(t1 < 0)
+				return -1.0f;
+
+			if(t0 < 0 )
+			{
+				return t1;
+			}
+			else
+			{
+				return t0;
+			}
+		}
+
 
         //----- array version
 
