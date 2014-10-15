@@ -58,21 +58,21 @@ namespace alfar
             mat.x.x = 2.0f / (right - left);
             mat.x.y = 0;
             mat.x.z = 0;
-            mat.x.w = 0;
+            mat.x.w = -(right + left)/(right - left);
 
             mat.y.x = 0;
             mat.y.y = 2.0f/(top-bottom);
             mat.y.z = 0;
-            mat.y.w = 0;
+            mat.y.w = -(top + bottom) / (top - bottom);
 
             mat.z.x = 0;
             mat.z.y = 0;
             mat.z.z = 2.0f/(zFar - zNear);
-            mat.z.w = 0;
+            mat.z.w =  -(zFar + zNear) / (zFar - zNear);
 
-            mat.t.x = -(right + left)/(right - left);
-            mat.t.y = -(top + bottom) / (top - bottom);
-            mat.t.z = -(zFar + zNear) / (zFar - zNear);
+            mat.t.x = 0;
+            mat.t.y = 0;
+            mat.t.z = 0;
             mat.t.w = 1;
 
 			return mat;
@@ -139,5 +139,24 @@ namespace alfar
 		}
 
 		//===========================================================================
+
+		inline  Matrix4x4 setBase(alfar::Matrix4x4& m, alfar::Vector3 p_X, alfar::Vector3 p_Y, alfar::Vector3 p_Z)
+		{
+			alfar::Matrix4x4 ret = m;
+
+			ret.x.x = p_X.x;
+			ret.y.x = p_X.y;
+			ret.z.x = p_X.z;
+			
+			ret.x.y = p_Y.x;
+			ret.y.y = p_Y.y;
+			ret.z.y = p_Y.z;
+			
+			ret.x.z = p_Z.x;
+			ret.y.z = p_Z.y;
+			ret.z.z = p_Z.z;
+
+			return ret;
+		}
     }
 }
